@@ -1,0 +1,121 @@
+<mvc:View
+	controllerName="com.otisoft.favs.Favorites.controller.MainView"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:layout="sap.ui.layout"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+>
+	<App
+		id="idApp"
+		backgroundImage="resources/img/bg.jpg"
+		backgroundRepeat="true"
+	>
+		<Page
+			id="idFavPage"
+			showHeader="false"
+			backgroundDesign="Transparent"
+		>
+			<VBox
+				id="idSearchVBox"
+				class="sapUiResponsiveMargin"
+			>
+				<HBox
+					id="idSearchBox"
+					alignItems="Center"
+					justifyContent="SpaceBetween"
+				>
+					<SearchField
+						id="idSearchField"
+						placeholder="Search by Title or SubTitle..."
+						search="onSearch"
+						liveChange="onSearchLiveChange"
+						width="100%"
+					/>
+					<Switch
+						id="idThemeSwitch"
+						change="onThemeToggle"
+						state="false"
+						customTextOn="Light"
+						customTextOff="Dark"
+					/>
+				</HBox>
+			</VBox>
+			<List
+				id="idGroupsList"
+				items="{
+					path: 'favorites>/groups',
+					templateShareable: true
+				}"
+				backgroundDesign="Transparent"
+			>
+				<items>
+					<CustomListItem id="idGroupCustomListItem">
+						<Panel
+							id="idPanel"
+							expand="onPanelExpand"
+							expandable="true"
+							expanded="{favorites>expanded}"
+							headerText="{favorites>title}"
+							width="auto"
+							class="sapUiResponsiveMargin"
+							backgroundDesign="Transparent"
+							app:groupId="{favorites>title}"
+						>
+							<content>
+								<layout:VerticalLayout
+									id="idVerticalLayout"
+									class="sapUiResponsiveMargin"
+								>
+									<layout:HorizontalLayout
+										id="idTilesHorizontalLayout"
+										allowWrapping="true"
+										content="{
+											path: 'favorites>tiles',
+											templateShareable: true
+										}"
+									>
+										<GenericTile
+											id="idGenericTile"
+											class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+											header="{favorites>header}"
+											subheader="{favorites>subheader}"
+											press="onPress(${favorites>url})"
+											appShortcut="{favorites>appShortcut}"
+											systemInfo="{favorites>systemInfo}"
+										>
+											<TileContent id="idTileContent">
+												<ImageContent
+													id="idImageContent"
+													src="{favorites>headerImage}"
+												/>
+											</TileContent>
+										</GenericTile>
+									</layout:HorizontalLayout>
+									<layout:HorizontalLayout
+										id="idLinksHorizontalLayout"
+										allowWrapping="true"
+										content="{
+											path: 'favorites>links',
+											templateShareable: true
+										}"
+										class="sapUiMediumMarginTop"
+									>
+										<GenericTile
+											id="_IDGenGenericTile2"
+											header="{favorites>header}"
+											subheader="{favorites>subheader}"
+											press="onPress(${favorites>url})"
+											mode="LineMode"
+											class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+										/>
+									</layout:HorizontalLayout>
+								</layout:VerticalLayout>
+							</content>
+						</Panel>
+					</CustomListItem>
+				</items>
+			</List>
+		</Page>
+	</App>
+</mvc:View>

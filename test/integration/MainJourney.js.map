@@ -1,0 +1,1 @@
+{"version":3,"file":"MainJourney.js","names":["sap","ui","define","opaTest","Given","When","Then","iStartMyApp","onTheMainPage","iShouldSeeTheTitle","iTeardownMyApp"],"sources":["MainJourney-dbg.js"],"mappings":"AAAAA,IAAIC,GAAGC,OAAO,CACZ,uBAEA,gBACC,SAAUC,GACX,aAEAA,EAAQ,sBAAuB,SAAUC,EAAOC,EAAMC,GAGpDF,EAAMG,cAMND,EAAKE,cAAcC,qBAGnBH,EAAKI,gBACP,EAEF","ignoreList":[]}
